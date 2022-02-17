@@ -1,0 +1,264 @@
+/* RESET */
+* {
+    box-sizing: border-box;
+    font-family: sans-serif;
+    padding: 0;
+    margin: 0;
+}
+
+body
+{
+    background: #dbdbdb;
+    text-align: center;
+    min-height: 100vh;
+    font-size: 24px;
+}
+
+header, #bracketNav
+{
+    display: flex;
+    background: #2b2b2b;
+    color: white;
+    align-items: center;
+}
+
+header
+{
+    justify-content: right;
+}
+
+#bracketNav
+{
+    justify-content: center;
+}
+
+ul > li > a
+{
+    color: white;
+    text-decoration: none;
+}
+
+ul > li > a:hover
+{
+    color: black;
+    background-color: white;
+}
+
+main
+{
+    display: flex;
+    background-color: #e6e6e6;
+    margin: 5px;
+    padding: 20px;
+    align-items: center;
+    justify-content: center;
+}
+
+main h1 
+{
+    margin: 5px 30px;
+}
+
+.content
+{
+    width: 100%;
+}
+
+.content > form
+{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.contentText
+{
+    text-align: left;
+    border: 1px solid black;
+    margin: 20px;
+}
+
+#friendBox
+{
+    max-height: 60vh;
+    overflow: auto;
+}
+
+.winnerHighlight
+{
+    color: red;
+    text-decoration: underline;
+    font-weight: bold;
+}
+
+.currentHighlight
+{
+    background: #2b2b2b;
+    color: white;
+    font-weight: bold;
+}
+
+.contentText p
+{
+    margin: 20px;
+}
+
+.content button
+{
+    margin: 40px 20px;
+}
+
+#userContent
+{
+    flex-direction: column;
+    align-items: center;
+    justify-content:flex-start;
+}
+
+footer
+{
+    background: #2b2b2b;
+    color: white;
+    font-size: 18px;
+    margin-top: auto;
+}
+
+.comments, .right-sidebar
+{
+    background-color: #e6e6e6;
+    display: flex;
+    flex-direction: column;
+    font-size: 15px;
+    overflow: auto;
+}
+
+.container {
+    display: flex;
+    flex-direction: column;
+    justify-items: center;
+    min-height: 100vh;
+}
+
+.voteButton
+{
+    margin: 0px 20px;
+    font-size: 30px;
+}
+
+#progress
+{
+    width: 90%;
+    height: 60px;
+    border-style: solid;
+    background-color: coral;
+    margin: auto;
+    margin-bottom: 20px;
+}
+
+#fill
+{
+    width: 20%;
+    height: 100%;
+    background-color: aquamarine;
+}
+
+#matchTime
+{
+    margin-top: -20px;
+    font-size: 15px;
+}
+
+.comment
+{
+    background-color: white;
+    color: black;
+    text-align: left;
+    line-height: 20px;
+    border: solid 1px black;
+}
+
+form
+{
+    width: 100%;
+    padding: 10px;
+    text-align: right;
+}
+
+textarea
+{
+    resize: none;
+    width: 100%;
+    min-height: 100px;
+}
+
+.comment > p
+{
+    margin: 20px;
+}
+
+.profilePicture
+{
+    width: 50px;
+    height: 50px;
+    margin: 20px;
+    float: left;
+}
+
+ul > li
+{
+    display: inline;
+    margin: 0px 20px;
+}
+
+#userProfileCharacters
+{
+    display: flex;
+    justify-content: space-around;
+}
+
+#userProfileCharacters > *
+{
+    display: inline;
+    margin: 0 auto;
+}
+
+@media all and (min-width: 765px) {
+    .container
+    {
+        flex-direction: row;
+        flex-wrap: wrap;    
+    }
+
+    header, 
+    footer
+    {
+        width: 100%;
+    }
+    main
+    {
+        flex: 2;
+        order: 2;
+        min-height: 85vh;
+        margin-bottom: auto;
+    }
+    
+    .comments, .right-sidebar
+    {
+        flex: 1;
+        order: 3;
+        max-height: 85vh;
+        flex-direction: column-reverse;
+    }
+
+    .user-sidebar
+    {
+        flex: 1;
+        order: 1;
+        max-height: 85vh;
+    }
+
+    footer {
+        order: 4;
+    }
+}
