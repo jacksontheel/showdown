@@ -48,10 +48,10 @@ main
 {
     display: flex;
     background-color: #e6e6e6;
-    margin: 5px;
     padding: 20px;
     align-items: center;
     justify-content: center;
+    min-height: 70vh;
 }
 
 main h1 
@@ -74,13 +74,15 @@ main h1
 
 .contentText
 {
+    width: 100%;
     text-align: left;
     border: 1px solid black;
     margin: 20px;
 }
 
-#friendBox
+.friendBox
 {
+    width: 100%;
     max-height: 60vh;
     overflow: auto;
 }
@@ -121,7 +123,6 @@ footer
     background: #2b2b2b;
     color: white;
     font-size: 18px;
-    margin-top: auto;
 }
 
 .comments, .right-sidebar
@@ -151,16 +152,41 @@ footer
     width: 90%;
     height: 60px;
     border-style: solid;
-    background-color: coral;
+    background-color: #ffcb47;
     margin: auto;
     margin-bottom: 20px;
+}
+
+.right-character-button {
+background: #ffcb47;
+border-style: outset;
+border-color: #cfa53c;
+height: 50px;
+text-shadow: none;
+}
+
+.character-right-span {
+    color: #cfa53c;
 }
 
 #fill
 {
     width: 20%;
     height: 100%;
-    background-color: aquamarine;
+    background-color: #4E7896;
+}
+
+.left-character-button {
+background: #4E7896;
+color: white;
+border-style: outset;
+border-color: #4E7896;
+height: 50px;
+text-shadow: none;
+}
+
+.character-left-span {
+    color: #4E7896;
 }
 
 #matchTime
@@ -175,7 +201,28 @@ footer
     color: black;
     text-align: left;
     line-height: 20px;
+    word-wrap: break-word;
     border: solid 1px black;
+    padding: 5px;
+}
+
+.comment > ul
+{
+    text-align: right;
+}
+
+.comment > ul > li > a
+{
+    color: #78b7e4;
+    background-color: #162530;
+    font-size: 14px;
+    padding: 3px;
+    border-radius: 3px;
+}
+
+.diaryBox
+{
+    overflow: auto;
 }
 
 form
@@ -203,18 +250,38 @@ textarea
     height: 50px;
     margin: 20px;
     float: left;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.profilePicture > img
+{
+    width: 100%;
 }
 
 ul > li
 {
     display: inline;
-    margin: 0px 20px;
+    margin: 0px 5vw;
+    font-size: 3vw;
 }
 
 #userProfileCharacters
 {
     display: flex;
-    justify-content: space-around;
+    justify-content: center;
+}
+
+#userProfileCharacters > form
+{
+    text-align: center;
+}
+
+#userProfileCharacters > form > input
+{
+    font-size: 22px;
 }
 
 #userProfileCharacters > *
@@ -223,7 +290,16 @@ ul > li
     margin: 0 auto;
 }
 
-@media all and (min-width: 765px) {
+.status
+{
+    border: solid 1px red;
+    font-size: 20px;
+    width: 50%;
+    text-align: center;
+}
+
+@media all and (min-width: 865px),
+{
     .container
     {
         flex-direction: row;
@@ -237,17 +313,16 @@ ul > li
     }
     main
     {
+        height: 85vh;
         flex: 2;
         order: 2;
-        min-height: 85vh;
-        margin-bottom: auto;
     }
     
     .comments, .right-sidebar
     {
         flex: 1;
         order: 3;
-        max-height: 85vh;
+        height: 85vh;
         flex-direction: column-reverse;
     }
 
@@ -260,5 +335,11 @@ ul > li
 
     footer {
         order: 4;
+    }
+    
+    ul > li
+    {
+        margin: 0px 20px;
+        font-size: 20px;
     }
 }
