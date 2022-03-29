@@ -33,6 +33,19 @@ class Dao {
         }
     }
 
+    public function removeComment ($author, $fightid)
+    {
+            $conn = $this->getConnection();
+            $saveQuery =
+                "delete from comment where 
+                author= :author 
+                and fightid = :fightid;";
+            $q = $conn->prepare($saveQuery);
+            $q->bindParam(":author", $author);
+            $q->bindParam(":fightid", $fightid);
+            $q->execute();       
+    }
+
     public function getComments ($fightid) {
         $conn = $this->getConnection();
         return $conn->query("SELECT * FROM comment WHERE fightid = " . $fightid . "ORDER BY id DESC");
