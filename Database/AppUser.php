@@ -60,17 +60,6 @@ class AppUser {
         return $retVal;
     }
 
-    public function isAdmin()
-    {
-        $dao = new Dao();
-        $conn = $dao->getConnection();
-        $query = "select admin from appUser where username=:username";
-        $q = $conn->prepare($query);
-        $q->bindParam(":username", $this->username);
-        $q->execute();
-        return $q->fetch()["admin"];
-    }
-
     public function sendRequestFrom($follower)
     {
         $dao = new Dao();

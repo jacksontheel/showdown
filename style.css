@@ -220,22 +220,6 @@ text-shadow: none;
     border-radius: 3px;
 }
 
-.comment > .commentUsername
-{
-    float: left;
-}
-
-.comment > .commentDelete
-{
-    float: right;
-}
-
-.comment > .commentContent
-{
-    float: clear;
-    padding-top: 15px;
-}
-
 .diaryBox
 {
     overflow: auto;

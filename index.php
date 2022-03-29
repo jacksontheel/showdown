@@ -1,22 +1,13 @@
 <?php
     require_once "Database/Dao.php";
     require_once "Database/Fight.php";
-    require_once "Database/AppUser.php";
     $dao = new Dao();
 
     session_start();
 
-    // Set up user if logged in
-    $loggedIn = isset($_SESSION["username"]);
-    $user;
-    if ($loggedIn)
-    {
-        $user = new AppUser($_SESSION["username"]);
-    }
-
     // Setting up today's fight
     date_default_timezone_set('America/Los_Angeles');
-    $startDate = date_create("2022-03-25");
+    $startDate = date_create("2022-03-26");
     $today = date_create();
     $diff = date_diff($startDate, $today);
     $todayId = 1 + $diff->format("%a");
@@ -31,11 +22,13 @@
         $fight = new Fight($_GET["day"]);
         $readOnly = true;
     }
+
+
 ?>
 <meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1" />
 <html>
     <head>
-        <link rel="stylesheet" href="style.css?v=1.02">
+        <link rel="stylesheet" href="style.css?v=1.01">
     </head>
     <body>
         <div class="container">
@@ -51,7 +44,7 @@
                         $contestantNumber = 1;
                         foreach ($contestants as $c)
                         {
-                            if ($readOnly || ( $loggedIn && $fight->hasVoted($user->getUsername()) ))
+                            if ($readOnly || ( isset($_SESSION["username"]) && $fight->hasVoted($_SESSION["username"]) ))
                             {
                                 if ($contestantNumber == 1)
                                 {
@@ -112,14 +105,10 @@
                     foreach ($comments as $comment)
                     {
                         echo "<div class='comment'>";
-                        echo "<a class='commentUsername' href='user.php?username=" . htmlspecialchars($comment["author"]) . "'>";
-                            echo htmlspecialchars($comment["author"]);
+                        echo "<a href='user.php?username=" . htmlspecialchars($comment["author"]) . "'>";
+                        echo "<p>" . htmlspecialchars($comment["author"]) . "</p>";
                         echo "</a>";
-                        if ($loggedIn && ($user->isAdmin() || $comment["author"] == $user->getUsername()) )
-                        {
-                            echo "<a class='commentDelete' href='Handler/DeleteCommentHandler.php?username=" . $comment["author"] . "&fightid=" . $fight->id . "'>X</a>";
-                        }
-                        echo "<p class='commentContent'>" . htmlspecialchars($comment["content"]) . "</p>";
+                        echo "<p>" . htmlspecialchars($comment["content"]) . "</p>";
                         echo "<ul>";
                         echo "<li><a href='https://twitter.com/intent/tweet?text=" . urlencode($fight->contestantsString() . "\n" . $comment["content"] . "\n\neverybodyfights.herokuapp.com") . "'>tweet</a></li>";
                         echo "</ul>";
@@ -143,6 +132,7 @@
                     ?>
                 </ul>
             </footer>  
+            <footer>&#169;Jackson Theel 2022</footer>  
         </div>
     </body>
 </html>
