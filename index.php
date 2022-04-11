@@ -28,7 +28,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1" />
 <html>
     <head>
-        <link rel="stylesheet" href="style.css?v=1.01">
+        <link rel="stylesheet" href="style.css?v=1.02">
     </head>
     <body>
         <div class="container">
