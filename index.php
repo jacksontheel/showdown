@@ -7,7 +7,7 @@
 
     // Setting up today's fight
     date_default_timezone_set('America/Los_Angeles');
-    $startDate = date_create("2022-03-26");
+    $startDate = date_create("2022-03-25");
     $today = date_create();
     $diff = date_diff($startDate, $today);
     $todayId = 1 + $diff->format("%a");
