@@ -1,7 +1,7 @@
 /* RESET */
 * {
     box-sizing: border-box;
-    font-family: sans-serif;
+    font-family: 'Lato', sans-serif;
     padding: 0;
     margin: 0;
 }
@@ -20,6 +20,26 @@ header, #bracketNav
     background: #2b2b2b;
     color: white;
     align-items: center;
+}
+
+.readOnly
+{
+    background-color: #46cc69;
+    border-radius: 0 0 20px 20px;
+}
+
+.readOnly p
+{
+    color: #000000;
+    margin: 0 auto;
+    font-size: 3vw;
+}
+
+.readonlyClose
+{
+    text-decoration: none;
+    color: #000000;
+    margin-right: 5%;
 }
 
 header
@@ -341,5 +361,10 @@ ul > li
     {
         margin: 0px 20px;
         font-size: 20px;
+    }
+
+    .readOnly p
+    {
+        font-size: 18;
     }
 }

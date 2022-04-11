@@ -7,7 +7,7 @@
 
     // Setting up today's fight
     date_default_timezone_set('America/Los_Angeles');
-    $startDate = date_create("2022-03-26");
+    $startDate = date_create("2022-03-25");
     $today = date_create();
     $diff = date_diff($startDate, $today);
     $todayId = 1 + $diff->format("%a");
@@ -35,6 +35,10 @@
             <?php
                 require_once "Nav.php";
             ?>
+            <header class="readOnly">
+                <p>Everybody Fights is going read-only on May 1st. Thanks for playing!</p>
+                <a class="readOnlyClose">X</a>
+            </header>
             <main>
                 <div class="content">
                     <h1>Fight to the death:<br />Who would win?</h1>
@@ -82,11 +86,7 @@
                             echo $fight->getFillPercent();
                         ?>%"></div>
                     </div>
-                    <?php
-                        $midnight = new DateTime("tomorrow 00:00:00");
-                        $timeUntil = date_diff($today, $midnight);
-                        echo "<p id='matchTime'>" . $timeUntil->format("%H:%I:%S") . " until next match</p>";
-                    ?>
+                    <p id="matchTime"></p>
                 </div>
             </main>
             <aside class="comments">
@@ -134,5 +134,10 @@
             </footer>  
             <footer>&#169;Jackson Theel 2022</footer>  
         </div>
+    <script src="jquery.js"></script>
+    <script src="jquery-ui.js"></script>
+    <script src="countdown.js"></script>
+    <script src="animatebar.js"></script>
+    <script src="readOnlyBanner.js"></script>
     </body>
 </html>
