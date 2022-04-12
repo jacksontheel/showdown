@@ -22,7 +22,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1" />
 <html>
     <head>
-        <link rel="stylesheet" href="../style.css?v=1.02">
+        <link rel="stylesheet" href="../style.css?v=1.03">
         <link rel="preconnect" href="https://fonts.googleapis.com">
         <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
         <link href="https://fonts.googleapis.com/css2?family=Lato:wght@100;400&display=swap" rel="stylesheet">

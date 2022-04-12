@@ -1,6 +1,7 @@
 <?php
     require_once "Database/Dao.php";
     require_once "Database/Fight.php";
+    require_once "Database/AppUser.php";
     $dao = new Dao();
 
     session_start();
@@ -23,12 +24,18 @@
         $readOnly = true;
     }
 
-
+    // Set up user if logged in
+    $loggedIn = isset($_SESSION["username"]);
+    $user;
+    if ($loggedIn)
+    {
+        $user = new AppUser($_SESSION["username"]);
+    }
 ?>
 <meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1" />
 <html>
     <head>
-        <link rel="stylesheet" href="style.css?v=1.02">
+        <link rel="stylesheet" href="style.css?v=1.03">
     </head>
     <body>
         <div class="container">
@@ -48,7 +55,7 @@
                         $contestantNumber = 1;
                         foreach ($contestants as $c)
                         {
-                            if ($readOnly || ( isset($_SESSION["username"]) && $fight->hasVoted($_SESSION["username"]) ))
+                            if ($readOnly || ( $loggedIn && $fight->hasVoted($user->getUsername()) ))
                             {
                                 if ($contestantNumber == 1)
                                 {
@@ -105,9 +112,14 @@
                     foreach ($comments as $comment)
                     {
                         echo "<div class='comment'>";
-                        echo "<a href='user.php?username=" . htmlspecialchars($comment["author"]) . "'>";
-                        echo "<p>" . htmlspecialchars($comment["author"]) . "</p>";
+                        echo "<a class='commentUsername' href='user.php?username=" . htmlspecialchars($comment["author"]) . "'>";
+                            echo htmlspecialchars($comment["author"]);
                         echo "</a>";
+                        echo "</a>";
+                        if ($loggedIn && ($user->isAdmin() || $comment["author"] == $user->getUsername()) )
+                        {
+                            echo "<a class='commentDelete' href='Handler/DeleteCommentHandler.php?username=" . $comment["author"] . "&fightid=" . $fight->id . "'>X</a>";
+                        }
                         echo "<p>" . htmlspecialchars($comment["content"]) . "</p>";
                         echo "<ul>";
                         echo "<li><a href='https://twitter.com/intent/tweet?text=" . urlencode($fight->contestantsString() . "\n" . $comment["content"] . "\n\neverybodyfights.herokuapp.com") . "'>tweet</a></li>";
