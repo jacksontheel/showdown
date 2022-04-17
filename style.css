@@ -40,6 +40,7 @@ header, #bracketNav
     text-decoration: none;
     color: #000000;
     margin-right: 5%;
+    cursor: pointer;
 }
 
 header
@@ -56,6 +57,11 @@ ul > li > a
 {
     color: white;
     text-decoration: none;
+}
+
+.current
+{
+    color: red;
 }
 
 ul > li > a:hover

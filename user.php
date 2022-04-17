@@ -31,6 +31,7 @@
     <body>
         <div class="container">
             <?php
+                $_GET["current"] = "profile";
                 require_once "Nav.php";
             ?>
             <main id="userContent" class="user-sidebar">

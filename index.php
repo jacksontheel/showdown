@@ -40,6 +40,7 @@
     <body>
         <div class="container">
             <?php
+                $_GET["current"] = "home";
                 require_once "Nav.php";
             ?>
             <header class="readOnly">

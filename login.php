@@ -29,6 +29,7 @@
     <body>
         <div class="container">
             <?php
+                $_GET["current"] = "login";
                 require_once "Nav.php";
             ?>
             <main>
